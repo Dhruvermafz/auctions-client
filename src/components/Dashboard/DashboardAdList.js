@@ -94,7 +94,6 @@ const DashboardAdList = () => {
       </Box>
     </>
   );
-  return <div></div>;
 };
 
 export default DashboardAdList;
