@@ -9,12 +9,13 @@ import {
 } from "./types";
 import { setAlert } from "./alert";
 import setAuthToken from "../utils/setAuthToken";
+import { REACT_APP_API_BASE_URL } from "../config";
 
 export const loadUser = () => async (dispatch) => {
   if (localStorage.token) setAuthToken(localStorage.token);
 
   try {
-    const res = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/auth`);
+    const res = await axios.get(`${REACT_APP_API_BASE_URL}/auth`);
     dispatch({
       type: USER_LOADED,
       payload: res.data,
@@ -45,7 +46,7 @@ export const register =
 
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_API_BASE_URL}/user`,
+        `${REACT_APP_API_BASE_URL}/user`,
         body,
         config
       );
@@ -85,7 +86,7 @@ export const login = (email, password) => async (dispatch) => {
 
   try {
     const res = await axios.post(
-      `${process.env.REACT_APP_API_BASE_URL}/auth`,
+      `${REACT_APP_API_BASE_URL}/auth`,
       body,
       config
     );
@@ -126,7 +127,7 @@ export const skipLogin = () => async (dispatch) => {
 
   try {
     const res = await axios.post(
-      `${process.env.REACT_APP_API_BASE_URL}/auth`,
+      `${REACT_APP_API_BASE_URL}/auth`,
       body,
       config
     );

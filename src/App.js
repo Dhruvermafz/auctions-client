@@ -11,7 +11,7 @@ import Home from "./components/Home/Home";
 function App() {
   useEffect(() => {
     store.dispatch(loadUser());
-  });
+  }, []);
 
   return (
     <Provider store={store}>
