@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { TextField } from "@mui/material";
-import Button from "@mui/material";
+import { Button } from "@mui/material";
 import { login, skipLogin } from "../../actions/auth";
 import { setAlert, removeAlert } from "../../actions/alert";
 import "../css/auth.css";

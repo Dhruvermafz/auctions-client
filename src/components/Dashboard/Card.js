@@ -14,7 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import imagePlaceholder from "../../images/no-image-icon.png";
-import { secondToHmsShort } from "../../utils/secondToHms";
+import { secondsToHmsShort } from "../../utils/secondToHms";
 
 function MediaCard(props) {
   const navigate = useNavigate();
@@ -62,7 +62,7 @@ function MediaCard(props) {
             </Typography>
 
             <Typography variant="body2" color="text.secondary">
-              Remaining: {secondToHmsShort(props.ad.timer)}
+              Remaining: {secondsToHmsShort(props.ad.timer)}
             </Typography>
 
             <Typography variant="body2" color="text.secondary">

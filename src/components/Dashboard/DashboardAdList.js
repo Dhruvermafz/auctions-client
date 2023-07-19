@@ -9,7 +9,6 @@ import {
   paginationStyle,
   dashCardStyle,
 } from "../css/boardStyle";
-
 const DashboardAdList = () => {
   const [ads, setAds] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -21,7 +20,7 @@ const DashboardAdList = () => {
 
     const fetchData = async () => {
       const res = await axios.get(
-        `${process.env.BASE_URL}/user/products/posted`
+        `${process.env.REACT_APP_API_BASE_URL}/user/products/posted`
       );
       setAds(res.data);
       setLoading(false);
