@@ -45,9 +45,9 @@ const Nav = (props) => {
               Logout
             </Link>
           ) : (
-            <Link to="/login" sx={{ textDecoration: "none" }}>
+            <RouterLink to="/login" sx={{ textDecoration: "none" }}>
               Login
-            </Link>
+            </RouterLink>
           )}
         </div>
       </div>
