@@ -131,5 +131,6 @@ const handleErrors = (err, dispatch) => {
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, "error")));
     }
+    console.log(err);
   }
 };
