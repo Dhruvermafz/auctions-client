@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
+import "../css/form.css";
 import {
   Box,
   Paper,
@@ -141,105 +142,106 @@ const AdForm = (props) => {
       <Box sx={boxStyle}>
         <Paper sx={adFormArea}>
           <Typography variant="h4">Post Ad</Typography>
-        </Paper>
 
-        <Box sx={formComponent}>
-          <InputLabel>Product Name</InputLabel>
-          <TextField
-            name="productName"
-            onChange={(e) => {
-              handleFormChange(e);
-            }}
-            size="small"
-            sx={formTextField}
-          ></TextField>
-        </Box>
-
-        <Box sx={formComponent}>
-          <InputLabel>Description</InputLabel>
-          <TextField
-            name="description"
-            multiline
-            placeholder="Product description"
-            onChange={(e) => handleFormChange(e)}
-            size="small"
-            rows={3}
-            sx={formTextField}
+          <Alert
+            message={alert.message}
+            severity={alert.severity}
+            onClose={handleCloseAlert}
           />
-        </Box>
 
-        <Box sx={formComponent}>
-          <InputLabel>Base Price</InputLabel>
-          <TextField
-            name="basePrice"
-            onChange={(e) => {
-              handleFormChange(e);
-            }}
-            size="small"
-            placeholder="Auction will start from this price point"
-            sx={formTextField}
-          ></TextField>
-        </Box>
-
-        <Box sx={formComponent}>
-          <InputLabel>Duration</InputLabel>
-          <TextField
-            name="duration"
-            onChange={(e) => {
-              handleFormChange(e);
-            }}
-            size="small"
-            placeholder="Duration in seconds (Max 1 hour)"
-            sx={formTextField}
-          ></TextField>
-        </Box>
-
-        <Box sx={formComponent}>
-          <InputLabel>Category</InputLabel>
-          <TextField
-            name="category"
-            onChange={(e) => {
-              handleFormChange(e);
-            }}
-            size="small"
-            placeholder="Food, electronics, ...."
-            sx={formTextField}
-          ></TextField>
-        </Box>
-
-        {uploading ? (
-          <LoadingDisplay />
-        ) : (
           <Box sx={formComponent}>
-            <InputLabel>Upload Image</InputLabel>
-            <Input
-              name="uploaded_file"
-              type="file"
-              id="imageFile"
-              onChange={fileSelected}
-              fullWidth
-            />
-            {file === "" && (
-              <Typography variant="caption">
-                jpg, png or gif maximum 3 MB
-              </Typography>
-            )}
-            <label htmlFor="imageFile">{fileName}</label>
+            <InputLabel>Product Name</InputLabel>
+            <TextField
+              name="productName"
+              onChange={(e) => {
+                handleFormChange(e);
+              }}
+              size="small"
+              sx={formTextField}
+            ></TextField>
           </Box>
-        )}
 
-        <Box sx={formSubmitButtonContainer}>
-          {!uploading && (
-            <Button variant="contained" onClick={(e) => handleSubmit(e)}>
-              Submit
-            </Button>
+          <Box sx={formComponent}>
+            <InputLabel>Description</InputLabel>
+            <TextField
+              name="description"
+              multiline
+              placeholder="Product description"
+              onChange={(e) => handleFormChange(e)}
+              size="small"
+              rows={3}
+              sx={formTextField}
+            />
+          </Box>
+
+          <Box sx={formComponent}>
+            <InputLabel>Base Price</InputLabel>
+            <TextField
+              name="basePrice"
+              onChange={(e) => {
+                handleFormChange(e);
+              }}
+              size="small"
+              placeholder="Auction will start from this price point"
+              sx={formTextField}
+            ></TextField>
+          </Box>
+
+          <Box sx={formComponent}>
+            <InputLabel>Duration</InputLabel>
+            <TextField
+              name="duration"
+              onChange={(e) => {
+                handleFormChange(e);
+              }}
+              size="small"
+              placeholder="Duration in seconds (Max 1 hour)"
+              sx={formTextField}
+            ></TextField>
+          </Box>
+
+          <Box sx={formComponent}>
+            <InputLabel>Category</InputLabel>
+            <TextField
+              name="category"
+              onChange={(e) => {
+                handleFormChange(e);
+              }}
+              size="small"
+              placeholder="Food, electronics, ...."
+              sx={formTextField}
+            ></TextField>
+          </Box>
+
+          {uploading ? (
+            <LoadingDisplay />
+          ) : (
+            <Box sx={formComponent}>
+              <InputLabel>Upload Image</InputLabel>
+              <Input
+                name="uploaded_file"
+                type="file"
+                id="imageFile"
+                onChange={fileSelected}
+                fullWidth
+              />
+              {file === "" && (
+                <Typography variant="caption">
+                  jpg, png or gif maximum 3 MB
+                </Typography>
+              )}
+              <label htmlFor="imageFile">{fileName}</label>
+            </Box>
           )}
-        </Box>
-        <Alert
-          message={alert.message}
-          severity={alert.severity}
-          onClose={handleCloseAlert}
-        />
+
+          <Box sx={formSubmitButtonContainer}>
+            {!uploading && (
+              <Button variant="contained" onClick={(e) => handleSubmit(e)}>
+                Submit
+              </Button>
+            )}
+          </Box>
+        </Paper>
       </Box>
     </>
   );

@@ -1,5 +1,6 @@
+/* Container for the authentication section */
 .auth__container {
-  width: 100%;
+  width: 100vw;
   height: 90vh;
   display: flex;
   flex-direction: column;
@@ -7,6 +8,7 @@
   align-items: center;
 }
 
+/* Styling for the authentication form */
 .auth {
   padding: 3.5rem 4rem;
   border: 2px solid #d6d6d6;
@@ -15,44 +17,53 @@
   text-align: center;
 }
 
+/* Title of the authentication form */
 .auth__title {
   margin-bottom: 1.2rem;
   font-size: 1.8rem;
   font-weight: bold;
 }
 
+/* Subtitle of the authentication form */
 .auth__subtitle {
   margin-bottom: 1rem;
 }
 
+/* Styling for form groups */
 .form-group {
   margin: 0.5rem;
 }
 
+/* Styling for authentication buttons */
 .auth__button {
   margin: 0.8rem !important;
 }
 
+/* Styling for text fields in the authentication form */
 .auth__text-field {
-  width: 23vw;
-  min-width: 180px !important;
-  max-width: 320px !important;
+  width: 100%;
+  max-width: 320px;
 }
 
+/* Styling for the separator between form sections */
 .auth__separator {
   background-color: #dfdfdf;
   margin: 1.7rem 0;
   height: 2px;
+  width: 100%;
 }
 
+/* Styling for the skip button */
 .auth__skip-btn {
   color: teal !important;
 }
 
+/* Styling for the container of the app icon */
 .auth__image-container {
   margin-bottom: 1rem;
 }
 
+/* Styling for the app icon */
 .app__icon {
   width: 200px;
 }

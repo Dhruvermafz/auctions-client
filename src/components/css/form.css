@@ -1,0 +1,58 @@
+/* Responsive CSS for AdForm component */
+.boxStyle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  
+  .adFormArea {
+    padding: 3rem;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .formComponent {
+    margin-top: 1rem;
+    width: 100%;
+  }
+  
+  .formTextField {
+    width: 100%;
+  }
+  
+  .formSubmitButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  /* Custom styles for larger screens */
+  @media screen and (min-width: 768px) {
+    .boxStyle {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    .adFormArea {
+      width: 50%;
+    }
+  }
+  
+  /* Custom styles for extra-large screens */
+  @media screen and (min-width: 1200px) {
+    .boxStyle {
+      width: 80%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  
+    .adFormArea {
+      width: 60%;
+    }
+  }
+  
