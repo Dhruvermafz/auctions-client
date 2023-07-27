@@ -15,6 +15,7 @@ import "../css/nav.css";
 import logo from "../../images/nav-bar-banner.png";
 import { logout } from "../../actions/auth";
 
+import DarkMode from "../Extras/DarkMode";
 const Nav = (props) => {
   const [isListOpen, setIsListOpen] = useState(false);
 
@@ -53,6 +54,7 @@ const Nav = (props) => {
       </div>
 
       <div className="nav__group2">
+        <DarkMode />
         <div className="nav__account">
           {props.isAuth ? (
             <>
