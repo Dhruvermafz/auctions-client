@@ -1,23 +1,26 @@
 export function secondsToHms(d) {
-    d = Number(d);
-    var h = Math.floor(d / 3600);
-    var m = Math.floor((d % 3600) / 60);
-    var s = Math.floor((d % 3600) % 60);
-  
-    var hDisplay = h > 0 ? h + (h.toString() === '1' ? ' hour, ' : ' hours, ') : '';
-    var mDisplay = m > 0 ? m + (m.toString() === '1' ? ' minute, ' : ' minutes, ') : '';
-    var sDisplay = s > 0 ? s + (s.toString() === '1' ? ' second' : ' seconds') : '';
-    return hDisplay + mDisplay + sDisplay;
-  }
-  
-  export function secondsToHmsShort(d) {
-    d = Number(d);
-    var h = Math.floor(d / 3600);
-    var m = Math.floor((d % 3600) / 60);
-    var s = Math.floor((d % 3600) % 60);
-  
-    var hDisplay = h > 0 ? h + 'h ' : '';
-    var mDisplay = m > 0 ? m + 'm ' : '';
-    var sDisplay = s > 0 ? s + 's' : '';
-    return hDisplay + mDisplay + sDisplay;
-  }
+  d = Number(d);
+  const hours = Math.floor(d / 3600);
+  const minutes = Math.floor((d % 3600) / 60);
+  const seconds = Math.floor(d % 60);
+
+  const hDisplay =
+    hours > 0 ? hours + (hours === 1 ? " hour, " : " hours, ") : "";
+  const mDisplay =
+    minutes > 0 ? minutes + (minutes === 1 ? " minute, " : " minutes, ") : "";
+  const sDisplay =
+    seconds > 0 ? seconds + (seconds === 1 ? " second" : " seconds") : "";
+  return hDisplay + mDisplay + sDisplay;
+}
+
+export function secondsToHmsShort(d) {
+  d = Number(d);
+  const hours = Math.floor(d / 3600);
+  const minutes = Math.floor((d % 3600) / 60);
+  const seconds = Math.floor(d % 60);
+
+  const hDisplay = hours > 0 ? hours + "h " : "";
+  const mDisplay = minutes > 0 ? minutes + "m " : "";
+  const sDisplay = seconds > 0 ? seconds + "s" : "";
+  return hDisplay + mDisplay + sDisplay;
+}

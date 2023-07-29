@@ -56,6 +56,12 @@ const AdForm = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!form.productName.trim()) {
+      setAlert({ message: "Product name required!", severity: "error" });
+      return;
+    }
+
     //check for empty fields
     if (form.productName === "") {
       setAlert({ message: "Product name required!", severity: "error" });
@@ -95,22 +101,21 @@ const AdForm = (props) => {
   };
 
   const fileSelected = (e) => {
-    let fileSize = (e.target.files[0].size / (1024 * 1024)).toFixed(3);
-    let fileType = e.target.files[0].type.toString();
+    const selectedFile = e.target.files[0];
+    let fileSize = (selectedFile.size / (1024 * 1024)).toFixed(3);
+    let fileType = selectedFile.type;
     let regex = /^image\/(png|jpg|jpeg|gif)$/;
 
-    if (!regex.test(fileType)) {
-      props.setAlert("Image must be of type JPEG, PNG or GIF");
-      setFile("");
+    if (!regex.test(fileType) || fileSize > 3) {
       setFileValid(false);
-    } else if (fileSize > 3) {
-      props.setAlert("Image size must be less than 3 MB", "error");
-      setFile("");
-      setFileValid(false);
+      setAlert(
+        "Image must be a JPEG, PNG, or GIF file and less than 3 MB",
+        "error"
+      );
     } else {
       setFileValid(true);
-      setFile(e.target.files[0]);
-      setFileName(e.target.files[0].name);
+      setFile(selectedFile);
+      setFileName(selectedFile.name);
     }
   };
 
@@ -151,6 +156,7 @@ const AdForm = (props) => {
 
           <Box sx={formComponent}>
             <InputLabel>Product Name</InputLabel>
+
             <TextField
               name="productName"
               onChange={(e) => {

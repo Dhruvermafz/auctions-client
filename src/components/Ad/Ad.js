@@ -61,6 +61,13 @@ const Ad = (props) => {
   };
 
   useEffect(() => {
+    // Check if user is logged in and redirect to login if not
+    if (!props.isAuth) {
+      navigate("/login");
+    }
+  }, [props.isAuth]);
+
+  useEffect(() => {
     props.clearAlerts();
     props.setImageLoadingStatus();
     props.loadAdDetails(params.adId);
@@ -73,11 +80,15 @@ const Ad = (props) => {
   }, [props.adDetails.image]);
 
   useEffect(() => {
+    props.loadHighestBid(params.adId);
+  }, [params.adId]);
+
+  useEffect(() => {
     updateBidButtonStatus(bidPrice);
   }, [bidPrice, props.adDetails.auctionEnded]);
 
   useEffect(() => {
-    const adSocket = openSocket(REACT_APP_API_BASE_URL, {
+    const adSocket = openSocket(process.env.REACT_APP_API_BASE_URL, {
       path: "/socket/adpage",
     });
 
@@ -86,7 +97,7 @@ const Ad = (props) => {
     // user enters add page
     adSocket.on("auctionStarted", (res) => {
       console.log(res);
-      props.updateAdDetails(res.ad);
+      props.updateAdDetails(res.data);
       props.clearAlerts();
       if (res.action === "started") props.setAlert("Auction started", "info");
     });
@@ -152,9 +163,6 @@ const Ad = (props) => {
   }
 
   // check if user is logged
-  if (!props.isAuth) {
-    navigate("/login");
-  }
 
   if (props.loading || props.loadingHighestBid) {
     console.log("loading");

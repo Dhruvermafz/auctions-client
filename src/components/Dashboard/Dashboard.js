@@ -55,7 +55,7 @@ const Dashboard = (props) => {
                   <TableCell align="right" sx={tableCellStyle}>
                     Username
                   </TableCell>
-                  <TableCell align="right" sx={tableCellStyle}>
+                  <TableCell align="left" sx={tableCellStyle}>
                     {props.user.username}
                   </TableCell>
                 </TableRow>

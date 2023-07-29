@@ -1,29 +1,29 @@
-import * as React from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { Card } from "@mui/material";
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import {
   loadAdDetails,
   loadAdImage,
   setImageLoadingStatus,
 } from "../../actions/ad";
-import {
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Typography,
-} from "@mui/material";
 import imagePlaceholder from "../../images/no-image-icon.png";
 import { secondsToHmsShort } from "../../utils/secondToHms";
 
-function MediaCard(props) {
+function MediaCard({ ad, cardStyle, dashCard }) {
   const navigate = useNavigate();
 
-  const handleCardClick = (e) => {
-    navigate(`/ads/${props.ad._id}`);
+  const handleCardClick = () => {
+    navigate(`/ads/${ad._id}`);
   };
 
-  const updateAuctionStatus = (ad) => {
+  const updateAuctionStatus = () => {
     if (ad.sold) {
       return "Sold";
     } else if (ad.auctionEnded) {
@@ -34,44 +34,38 @@ function MediaCard(props) {
       return "Ongoing";
     }
   };
+
   return (
-    <a
-      onClick={(e) => {
-        handleCardClick(e);
-      }}
-      style={{ textDecoration: "none" }}
-    >
-      <Card style={props.cardStyle}>
-        <CardActionArea>
-          {!props.dashCard && (
-            <CardMedia
-              component="img"
-              height="180"
-              src={props.ad.image ? props.ad.image : imagePlaceholder}
-              alt="green iguana"
-            />
-          )}
+    <Card style={cardStyle}>
+      <CardActionArea onClick={handleCardClick}>
+        {!dashCard && (
+          <CardMedia
+            component="img"
+            height="180"
+            src={ad.image ? ad.image : imagePlaceholder}
+            alt="green iguana"
+          />
+        )}
 
-          <CardContent>
-            <Typography gutterBottom variant="h6" component="div">
-              {props.ad.productName}
-            </Typography>
+        <CardContent>
+          <Typography gutterBottom variant="h6">
+            {ad.productName}
+          </Typography>
 
-            <Typography variant="body2" color="text.secondary">
-              Price: ${props.ad.currentPrice.$numberDecimal}
-            </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Price: ${ad.currentPrice.$numberDecimal}
+          </Typography>
 
-            <Typography variant="body2" color="text.secondary">
-              Remaining: {secondsToHmsShort(props.ad.timer)}
-            </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Remaining: {secondsToHmsShort(ad.timer)}
+          </Typography>
 
-            <Typography variant="body2" color="text.secondary">
-              Status: {updateAuctionStatus(props.ad)}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </a>
+          <Typography variant="body2" color="text.secondary">
+            Status: {updateAuctionStatus()}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
   );
 }
 

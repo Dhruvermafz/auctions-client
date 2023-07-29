@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import { login, skipLogin } from "../../actions/auth";
-import { setAlert, removeAlert } from "../../actions/alert";
+import { setAlert } from "../../actions/alert";
 import "../css/auth.css";
 import Spinner from "../Extras/Spinner";
 import logo from "../../images/auctionslogo3.png";
@@ -42,7 +42,7 @@ const Login = (props) => {
       <section className="auth__container">
         <div className="auth">
           <div className="auth__image-container">
-            <img className="app_icon" src={logo} alt="navicon" />
+            <img className="app__icon" src={logo} alt="navicon" />
           </div>
 
           <p className="auth__subtitle">
@@ -56,7 +56,7 @@ const Login = (props) => {
             }}
           >
             <div className="form-group">
-              <Alert />
+              <Alert /> {/* Utilize the Alert component here */}
             </div>
 
             <div className="form-group">
@@ -104,7 +104,7 @@ const Login = (props) => {
             <Link to="/register">Sign Up</Link>
           </p>
 
-          <div className="auth__seperator" />
+          <div className="auth__separator" />
           <p>To use the app without login:</p>
           <Button
             variant="contained"
@@ -122,12 +122,10 @@ const Login = (props) => {
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   loading: state.auth.loading,
-  alerts: state.alert,
 });
 
 export default connect(mapStateToProps, {
   login,
   skipLogin,
-  setAlert,
-  removeAlert,
+  setAlert, // Use the setAlert action instead of removeAlert
 })(Login);

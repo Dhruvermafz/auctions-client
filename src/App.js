@@ -10,6 +10,8 @@ import { loadUser } from "./actions/auth";
 import Home from "./components/Home/Home";
 import Ad from "./components/Ad/Ad";
 import AdForm from "./components/Ad/AdForm";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Profile from "./components/Profile/Profile";
 function App() {
   useEffect(() => {
     store.dispatch(loadUser());
@@ -25,6 +27,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/ads/:adId" element={<Ad />} />
           <Route path="/posted" element={<AdForm />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </Provider>

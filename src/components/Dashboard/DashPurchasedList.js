@@ -18,7 +18,7 @@ import {
 
 const DashPurchasedList = ({ ads }) => {
   const navigate = useNavigate();
-  const [pageNumber, setPageNumber] = useNavigate(1);
+  const [pageNumber, setPageNumber] = useState(1);
   const [adPerPage] = useState(5);
 
   const getGMTTime = (time) => {
@@ -47,10 +47,7 @@ const DashPurchasedList = ({ ads }) => {
   return (
     <Box sx={purchasedListContainerStyle}>
       <Box sx={purchasedListTableStyle}>
-        <Table
-          sx={{ width: "70%", minWidth: 650 }}
-          aria-aria-label="simple table"
-        >
+        <Table sx={{ width: "70%", minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>Product Name</TableCell>

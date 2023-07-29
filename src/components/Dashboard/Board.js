@@ -59,19 +59,22 @@ const Board = (props) => {
     return <Navigate to="/login" />;
   }
 
+  // Filter ads with auctionEnded === false
+  const filteredAds = props.ads.filter((ad) => !ad.auctionEnded);
+
   // pagination
   let lastAdIndex = pageNumber * adPerPage;
   let firstAdIndex = lastAdIndex - adPerPage;
 
-  // pafe numner for buttons
-  let pageNumbers = [];
-  const num = Math.ceil(props.ads.length / adPerPage);
+  // page number for buttons
+  let pageNumberButtons = [];
+  const numPages = Math.ceil(filteredAds.length / adPerPage);
 
-  for (let i = 1; i <= num; i++) {
-    pageNumbers.push(i);
+  for (let i = 1; i <= numPages; i++) {
+    pageNumberButtons.push(i);
   }
 
-  //when pager number button is clicked
+  // when page number button is clicked
   const clickPageNumerButton = (num) => {
     setPageNumber(num);
   };
@@ -81,44 +84,38 @@ const Board = (props) => {
   ) : (
     <Box sx={boardStyle}>
       <Box sx={adAreaStyle}>
-        {props.ads.slice(firstAdIndex, lastAdIndex).map((ad) => {
-          return ad.auctionEnded ? null : (
-            <div className="product__container" key={ad._id}>
-              <Card
-                ad={ad}
-                key={ad._id}
-                dashCard={false}
-                cardStyle={boardCardStyle}
-              />
-            </div>
-          );
-        })}
+        {filteredAds.slice(firstAdIndex, lastAdIndex).map((ad) => (
+          <div className="product__container" key={ad._id}>
+            <Card
+              ad={ad}
+              key={ad._id}
+              dashCard={false}
+              cardStyle={boardCardStyle}
+            />
+          </div>
+        ))}
       </Box>
 
       <Box sx={paginationStyle}>
         <ButtonGroup variant="outlined" size="small">
           <Button
             disabled={pageNumber === 1}
-            onClick={(e) => clickPageNumerButton(pageNumber - 1)}
+            onClick={() => clickPageNumerButton(pageNumber - 1)}
           >
-            {" "}
             Prev
           </Button>
-          {pageNumbers.map((num) => {
-            return (
-              <Button
-                key={num}
-                disabled={pageNumber === num}
-                onClick={(e) => clickPageNumerButton(num)}
-              >
-                {num}
-              </Button>
-            );
-          })}
-
+          {pageNumberButtons.map((num) => (
+            <Button
+              key={num}
+              disabled={pageNumber === num}
+              onClick={() => clickPageNumerButton(num)}
+            >
+              {num}
+            </Button>
+          ))}
           <Button
-            disabled={pageNumber === pageNumbers.length - 1}
-            onClick={(e) => clickPageNumerButton(pageNumber + 1)}
+            disabled={pageNumber === pageNumberButtons.length}
+            onClick={() => clickPageNumerButton(pageNumber + 1)}
           >
             Next
           </Button>

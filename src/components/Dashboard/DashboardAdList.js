@@ -8,7 +8,7 @@ import {
   adAreaStyle,
   paginationStyle,
   dashCardStyle,
-} from "../css/boardStyle";
+} from "../css/dashStyle";
 const DashboardAdList = () => {
   const [ads, setAds] = useState([]);
   const [loading, setLoading] = useState(true);

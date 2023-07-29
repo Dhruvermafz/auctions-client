@@ -13,39 +13,33 @@ const useDarkMode = () => {
     document.documentElement.setAttribute("data-theme", "light");
   };
 
-  const storedTheme = localStorage.getItem("theme");
-  const preferDark =
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const defaultDark =
-    storedTheme === "dark" || (storedTheme === null && preferDark);
+  // Instead of using 'defaultDark', use a single state to keep track of the current theme
+  const [isDarkMode, setIsDarkMode] = React.useState(() => {
+    const storedTheme = localStorage.getItem("theme");
+    const preferDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return storedTheme === "dark" || (storedTheme === null && preferDark);
+  });
 
   // Set initial theme based on stored or preferred theme
   useEffect(() => {
-    if (defaultDark) {
-      setDark();
-    } else {
-      setLight();
-    }
-  }, []);
+    isDarkMode ? setDark() : setLight();
+  }, [isDarkMode]);
 
   // Toggle the theme
   const toggleTheme = () => {
-    if (document.documentElement.getAttribute("data-theme") === "dark") {
-      setLight();
-    } else {
-      setDark();
-    }
+    setIsDarkMode((prevMode) => !prevMode);
   };
 
   return {
-    defaultDark,
+    isDarkMode,
     toggleTheme,
   };
 };
 
 const DarkMode = () => {
-  const { defaultDark, toggleTheme } = useDarkMode();
+  const { isDarkMode, toggleTheme } = useDarkMode();
 
   return (
     <div className="toggle-theme-wrapper">
@@ -55,7 +49,7 @@ const DarkMode = () => {
           type="checkbox"
           id="checkbox"
           onChange={toggleTheme}
-          checked={defaultDark} // Use 'checked' instead of 'defaultChecked'
+          checked={isDarkMode}
         />
         <div className="slider round"></div>
       </label>
