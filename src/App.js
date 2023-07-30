@@ -12,6 +12,8 @@ import Ad from "./components/Ad/Ad";
 import AdForm from "./components/Ad/AdForm";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Profile from "./components/Profile/Profile";
+import Room from "./components/Room/Room";
+import Board from "./components/Dashboard/Board";
 function App() {
   useEffect(() => {
     store.dispatch(loadUser());
@@ -25,10 +27,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/ads/:adId" element={<Ad />} />
+          <Route path="/ads/:adId" element={<Room />} />
           <Route path="/posted" element={<AdForm />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
+          <Route exact path="/" element={<Board />} />
         </Routes>
       </BrowserRouter>
     </Provider>
