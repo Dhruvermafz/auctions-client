@@ -1,3 +1,31 @@
+/* Light mode */
+:root {
+  --primary-bg-color: #ffffff;
+  --secondary-bg-color: #f5f5f5;
+  --text-color: #000000;
+  --shadow-color: #cecece;
+}
+
+.nav {
+  background-color: var(--primary-bg-color);
+  box-shadow: 0 0 7px 0px var(--shadow-color);
+}
+
+/* Dark mode */
+.dark-mode {
+  --primary-bg-color: #333333;
+  --secondary-bg-color: #444444;
+  --text-color: #ffffff;
+  --shadow-color: #1a1a1a;
+}
+
+.dark-mode .nav {
+  background-color: var(--primary-bg-color);
+  box-shadow: 0 0 7px 0px var(--shadow-color);
+  color: var(--text-color);
+}
+
+
 .nav__icon {
     object-fit: contain;
     height: 40px;

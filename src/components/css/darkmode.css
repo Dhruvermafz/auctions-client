@@ -1,39 +1,32 @@
 :root {
-  /* Light mode colors */
   --font-color-light: #333;
   --background-color-light: #eee;
   --link-color-light: cornflowerblue;
+
   
-  /* Dark mode colors */
-  --font-color-dark: #eee;
-  --background-color-dark: #333;
-  --link-color-dark: lightblue;
-  
-  /* Common colors */
+}
+
+/* Dark mode colors */
+[data-theme="dark"] {
+  --font-color-light: #eee;
+  --background-color-light: #333;
+  --link-color-light: lightblue;
+}
+
+/* Common colors */
+:root {
   --font-color: var(--font-color-light);
   --background-color: var(--background-color-light);
   --link-color: var(--link-color-light);
-
-  /* Typography */
-  --font-size: 16px;
-  --line-height: 1.6;
-  --font-family: 'Roboto', sans-serif;
-}
-
-[data-theme="dark"] {
-  /* Apply dark mode colors when data-theme is set to "dark" */
-  --font-color: var(--font-color-dark);
-  --background-color: var(--background-color-dark);
-  --link-color: var(--link-color-dark);
 }
 
 body {
   /* Set background, text color, and font styles based on the data-theme attribute */
   background-color: var(--background-color);
   color: var(--font-color);
-  font-size: var(--font-size);
-  line-height: var(--line-height);
-  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: 1.6;
+  font-family: 'Roboto', sans-serif;
 }
 
 a {
@@ -44,20 +37,16 @@ a {
 /* Toggle theme styles */
 .toggle-theme-wrapper {
   display: flex;
-  flex-direction: row;
   align-items: center;
   gap: 4px;
-}
-
-.toggle-theme-wrapper span {
-  font-size: 28px;
+  font-size: 16px;
 }
 
 .toggle-theme {
   position: relative;
   display: inline-block;
-  height: 34px;
   width: 60px;
+  height: 34px;
 }
 
 .toggle-theme input {
@@ -100,4 +89,17 @@ input:checked + .slider {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+/* Styles for the dark mode slider */
+[data-theme="dark"] .slider {
+  background-color: #666;
+}
+
+[data-theme="dark"] .slider:before {
+  background-color: #333;
+}
+
+[data-theme="dark"] input:checked + .slider {
+  background-color: #6b6bff;
 }

@@ -1,28 +1,49 @@
-/* Add your CSS styles here */
-/* For example, you can customize the background color, font size, etc. */
+/* Light mode styles */
 .ProfileContainer {
-    background-color: #f2f2f2;
-    padding: 20px;
-  }
-  
-  .ProfilePaper {
-    padding: 20px;
-  }
-  
-  .ProfileHeading {
-    margin-bottom: 20px;
-  }
-  
-  .ProfileTable {
-    width: 60%;
-    min-width: 200px;
-  }
-  
-  .ProfileTableCell {
-    border-bottom: none;
-  }
-  
-  .ProfileTableRow:nth-of-type(odd) {
-    background-color: #f5f5f5;
-  }
-  
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.ProfilePaper {
+  padding: 20px;
+}
+
+.ProfileHeading {
+  margin-bottom: 20px;
+}
+
+.ProfileTable {
+  width: 60%;
+  min-width: 200px;
+}
+
+.ProfileTableCell {
+  border-bottom: none;
+}
+
+.ProfileTableRow:nth-of-type(odd) {
+  background-color: #f5f5f5;
+}
+
+/* Dark mode styles */
+.dark-mode .ProfileContainer {
+  background-color: #333333;
+  color: #f2f2f2;
+}
+
+.dark-mode .ProfilePaper {
+  background-color: #444444;
+  color: #f2f2f2;
+}
+
+.dark-mode .ProfileHeading {
+  color: #f2f2f2;
+}
+
+.dark-mode .ProfileTableCell {
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.dark-mode .ProfileTableRow:nth-of-type(odd) {
+  background-color: #555555;
+}
