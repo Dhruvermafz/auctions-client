@@ -14,22 +14,14 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import Profile from "./components/Profile/Profile";
 import Room from "./components/Room/Room";
 import Board from "./components/Dashboard/Board";
-import ThemeContext from "./utils/ThemeContext";
-import { createTheme, ThemeProvider } from "@mui/material";
-import DarkMode from "./components/Extras/DarkMode";
+import Settings from "./components/Home/Settings";
+
 function App() {
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
 
-  const theme = createTheme({
-    palette: {
-      mode: darkMode ? "dark" : "light",
-    }
-  })
-
   return (
-    <ThemeProvider theme={theme}>
     <Provider store={store}>
       <BrowserRouter>
         <Nav />
@@ -42,10 +34,10 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
           <Route exact path="/" element={<Board />} />
+          <Route exact path="/settings" element={<Settings />} />
         </Routes>
       </BrowserRouter>
     </Provider>
-    </ThemeProvider>
   );
 }
 

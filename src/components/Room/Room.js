@@ -49,6 +49,7 @@ const Room = () => {
     <Box>
       {/* Render the room details and auction management UI here */}
       {/* You can use the `room` state to display the room information */}
+      
     </Box>
   );
 };

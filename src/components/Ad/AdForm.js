@@ -126,7 +126,7 @@ const AdForm = (props) => {
 
     try {
       const res = await axios.post(
-        `${REACT_APP_API_BASE_URL}/upload/image`,
+        `${process.env.REACT_APP_API_BASE_URL}/uploads/image`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );
