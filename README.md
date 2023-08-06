@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# About
+Website where products can be purchased and sold via live auctions. \
+Sellers can upload product image along with information and setup an auction (duration, starting price). \
+Potential buyers can find the advertisements and bid on them. Auction pages have live notification and synchronization features, meaning that once a bid is place by one user, other users who are on the same page will receive the updates without having to refresh the page. \
+Users also receive a notification once an auction starts/ends.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Links
+- <a href="https://live-auctions.netlify.app/"><strong>Live Website</strong></a>
+- <a href="https://youtu.be/8IAzQQJ47to"><strong>Demo Video</strong></a>
+  <br>
+  <br>
 
-## Available Scripts
+# Description
+## Feature highlights:
+- Authentication: Login-logout
+- Authentication: Signup
+- Post ads along with image-upload
+- Landing page with ad cards and pagination
+- Live auction features
+- Users' history of purchased products and posted ads
+- Notification when new ads are posted
 
-In the project directory, you can run:
+## Language, Frameworks and Libraries
+Backed (REST API):
+- Node.js
+- Express
+- Javascript
 
-### `npm start`
+Frontend (Web application):
+- React JS
+- Redux (State management)
+- Material UI (Theme and ui components)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Database:
+- Mongodb
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Storage:
+- AWS S3 Bucket
 
-### `npm test`
+Hosting:
+- Render (server)
+- Vercel (client)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Screenshots:
+<p align="center">
+  <a href="https://live-auctions.netlify.app/">
+    <img width="600" src="./screenshots/home.jpg">
+  </a>
+</p>
+<br>
+<p align="center">
+  <a href="https://live-auctions.netlify.app/">
+    <img width="600" src="./screenshots/ad.jpg">
+  </a>
+</p>
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Notes on using the website
+Project is hosted <a href="https://live-auctions.netlify.app/"><strong>here</strong></a>
+- If you do not want to register, press the skip button during login. This will log you in as a test user (test@test.com).
