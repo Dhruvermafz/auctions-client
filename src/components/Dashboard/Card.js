@@ -15,15 +15,15 @@ import {
 } from "../../actions/ad";
 import imagePlaceholder from "../../images/no-image-icon.png";
 import { secondsToHmsShort } from "../../utils/secondToHms";
-
-function MediaCard({ ad, cardStyle, dashCard }) {
+import "../css/cardStyle.css";
+function MediaCard({ props }) {
   const navigate = useNavigate();
 
-  const handleCardClick = () => {
-    navigate(`/ads/${ad._id}`);
+  const handleCardClick = (e) => {
+    navigate(`/ads/${props.ad._id}`);
   };
 
-  const updateAuctionStatus = () => {
+  const updateAuctionStatus = (ad) => {
     if (ad.sold) {
       return "Sold";
     } else if (ad.auctionEnded) {
@@ -36,36 +36,39 @@ function MediaCard({ ad, cardStyle, dashCard }) {
   };
 
   return (
-    <Card style={cardStyle}>
-      <CardActionArea onClick={handleCardClick}>
-        {!dashCard && (
-          <CardMedia
-            component="img"
-            height="180"
-            src={ad.image ? ad.image : imagePlaceholder}
-            alt="green iguana"
-          />
-        )}
-
-        <CardContent>
-          <Typography gutterBottom variant="h6">
-            {ad.productName}
-          </Typography>
-
-          <Typography variant="body2" color="text.secondary">
-            Price: ${ad.currentPrice.$numberDecimal}
-          </Typography>
-
-          <Typography variant="body2" color="text.secondary">
-            Remaining: {secondsToHmsShort(ad.timer)}
-          </Typography>
-
-          <Typography variant="body2" color="text.secondary">
-            Status: {updateAuctionStatus()}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+    <a
+      onClick={(e) => {
+        handleCardClick(e);
+      }}
+      style={{ textDecoration: "none" }}
+    >
+      <Card style={props.cardStyle}>
+        <CardActionArea>
+          {!props.dashCard && (
+            <CardMedia
+              component="img"
+              height="180"
+              src={props.ad.image ? props.ad.image : imagePlaceholder}
+              alt="green iguana"
+            />
+          )}
+          <CardContent>
+            <Typography gutterBottom variant="h6" component="div">
+              {props.ad.productName}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Price: $ {props.ad.currentPrice.$numberDecimal}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Remaining: {secondsToHmsShort(props.ad.timer)}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Status: {updateAuctionStatus(props.ad)}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </a>
   );
 }
 

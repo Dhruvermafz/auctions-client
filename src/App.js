@@ -29,11 +29,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/ads/:adId" element={<Room />} />
-          <Route path="/posted" element={<AdForm />} />
+          <Route path="/ads/:adId" element={<Ad />} />
+          <Route path="/postad" element={<AdForm />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
-          <Route exact path="/" element={<Board />} />
+          {/* <Route exact path="/" element={<Board />} /> */}
           <Route exact path="/settings" element={<Settings />} />
         </Routes>
       </BrowserRouter>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import openSocket from "socket.io-client";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Spinner from "../Extras/Spinner";
 
 const Room = () => {
@@ -41,15 +41,19 @@ const Room = () => {
     };
   }, [id]);
 
-  if (loading) {
+  if (loading || !room) {
     return <Spinner />;
   }
 
   return (
     <Box>
-      {/* Render the room details and auction management UI here */}
-      {/* You can use the `room` state to display the room information */}
-      
+      <Typography variant="h2" gutterBottom>
+        {room.title}
+      </Typography>
+      <Typography variant="body1" gutterBottom>
+        {room.description}
+      </Typography>
+      {/* You can add more ad details using Typography or other MUI components */}
     </Box>
   );
 };

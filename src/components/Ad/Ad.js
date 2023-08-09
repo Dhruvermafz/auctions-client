@@ -324,6 +324,7 @@ const Ad = (props) => {
   );
 };
 
+
 const mapStateToProps = (state) => ({
   adDetails: state.ad.adDetails,
   loading: state.ad.loading,

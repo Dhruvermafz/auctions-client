@@ -1,0 +1,15 @@
+/* cardStyle.css */
+
+.card {
+    /* Common styling for the card */
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 16px;
+    /* You can add more common styling here */
+  
+    /* Dynamically applied styles */
+    background-color:  'white';
+    color:'black';
+    /* Add more dynamic styles based on props.cardStyle properties */
+  }
+  

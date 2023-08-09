@@ -45,7 +45,7 @@ const Nav = (props) => {
               <Button>Dashboard</Button>
             </RouterLink>
 
-            <RouterLink to="/posted" style={{ textDecoration: "none" }}>
+            <RouterLink to="/postad" style={{ textDecoration: "none" }}>
               <Button>Post Ad</Button>
             </RouterLink>
           </div>
@@ -56,14 +56,6 @@ const Nav = (props) => {
         <div className="nav__account">
           {props.isAuth ? (
             <>
-              {/* <Link
-                href="#"
-                color="inherit"
-                onClick={props.logout}
-                sx={{ textDecoration: "none" }}
-              >
-                Logout
-              </Link> */}
               {/* Profile Circle Avatar with List */}
               <Avatar
                 alt="User Avatar"
