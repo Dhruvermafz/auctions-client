@@ -15,8 +15,8 @@ import {
 } from "../../actions/ad";
 import imagePlaceholder from "../../images/no-image-icon.png";
 import { secondsToHmsShort } from "../../utils/secondToHms";
-import "../css/cardStyle.css";
-function MediaCard({ props }) {
+
+function MediaCard(props) {
   const navigate = useNavigate();
 
   const handleCardClick = (e) => {
@@ -44,7 +44,7 @@ function MediaCard({ props }) {
     >
       <Card style={props.cardStyle}>
         <CardActionArea>
-          {!props.dashCard && (
+          {!props.dashStyle && (
             <CardMedia
               component="img"
               height="180"

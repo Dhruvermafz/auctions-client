@@ -15,6 +15,7 @@ import Profile from "./components/Profile/Profile";
 import Room from "./components/Room/Room";
 import Board from "./components/Dashboard/Board";
 import Settings from "./components/Home/Settings";
+import Card from "./components/Dashboard/Card";
 
 function App() {
   useEffect(() => {
@@ -29,11 +30,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/ads/:adId" element={<Ad />} />
+          <Route path="/ads/:adId" element={<Card />} />
           <Route path="/postad" element={<AdForm />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
-          {/* <Route exact path="/" element={<Board />} /> */}
+          <Route exact path="/" element={<Board />} />
           <Route exact path="/settings" element={<Settings />} />
         </Routes>
       </BrowserRouter>

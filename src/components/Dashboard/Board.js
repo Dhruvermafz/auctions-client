@@ -13,7 +13,7 @@ import {
 import { loadAds, adPostedByOther, updateAdInList } from "../../actions/ad";
 import { setAlert, clearAlerts } from "../../actions/alert";
 import Spinner from "../Extras/Spinner";
-import Card from "./Card";
+import MediaCard from "./Card";
 
 const Board = (props) => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -86,7 +86,7 @@ const Board = (props) => {
       <Box sx={adAreaStyle}>
         {filteredAds.slice(firstAdIndex, lastAdIndex).map((ad) => (
           <div className="product__container" key={ad._id}>
-            <Card
+            <MediaCard
               ad={ad}
               key={ad._id}
               dashCard={false}
