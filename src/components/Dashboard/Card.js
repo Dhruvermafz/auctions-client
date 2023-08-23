@@ -23,7 +23,7 @@ function MediaCard(props) {
     navigate(`/ads/${props.ad._id}`);
   };
 
-  const updateAuctionStatus = (ad) => {
+  const updateAuctionStatus = ({ ad }) => {
     if (ad.sold) {
       return "Sold";
     } else if (ad.auctionEnded) {
@@ -48,19 +48,19 @@ function MediaCard(props) {
             <CardMedia
               component="img"
               height="180"
-              src={props.ad.image ? props.ad.image : imagePlaceholder}
+              src={props.adDetails.image ? props.adImage : imagePlaceholder}
               alt="green iguana"
             />
           )}
           <CardContent>
             <Typography gutterBottom variant="h6" component="div">
-              {props.ad.productName}
+              {props.adDetails.productName}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Price: $ {props.ad.currentPrice.$numberDecimal}
+              Price: $ {props.adDetails.currentPrice.$numberDecimal}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Remaining: {secondsToHmsShort(props.ad.timer)}
+              Remaining: {secondsToHmsShort(props.adDetails.timer)}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               Status: {updateAuctionStatus(props.ad)}

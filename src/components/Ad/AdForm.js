@@ -87,7 +87,7 @@ const AdForm = (props) => {
       } else {
         // with photo
         const imagePath = await uploadImage();
-        console.log(imagePath);
+
         if (imagePath) {
           await props.postAd({ ...form, image: imagePath });
           navigate("/");
@@ -126,7 +126,7 @@ const AdForm = (props) => {
 
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_API_BASE_URL}/upload/image`,
+        `${REACT_APP_API_BASE_URL}/upload/image`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

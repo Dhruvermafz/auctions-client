@@ -88,7 +88,7 @@ const Ad = (props) => {
   }, [bidPrice, props.adDetails.auctionEnded]);
 
   useEffect(() => {
-    const adSocket = openSocket(process.env.REACT_APP_API_BASE_URL, {
+    const adSocket = openSocket(REACT_APP_API_BASE_URL, {
       path: "/socket/adpage",
     });
 
@@ -323,7 +323,6 @@ const Ad = (props) => {
     </div>
   );
 };
-
 
 const mapStateToProps = (state) => ({
   adDetails: state.ad.adDetails,
