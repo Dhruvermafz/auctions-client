@@ -1,18 +1,19 @@
-import React from "react";
+import * as React from "react";
 import { connect } from "react-redux";
-import {
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Typography,
-} from "@mui/material";
+import Card from "@mui/material/Card";
 import { Link, useNavigate } from "react-router-dom";
+// Actions
 import {
   loadAdDetails,
   loadAdImage,
   setImageLoadingStatus,
 } from "../../actions/ad";
+// MUI Components
+import { CardActionArea } from "@mui/material";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+// Files
 import imagePlaceholder from "../../images/no-image-icon.png";
 import { secondsToHmsShort } from "../../utils/secondToHms";
 
@@ -23,11 +24,12 @@ function MediaCard(props) {
     navigate(`/ads/${props.ad._id}`);
   };
 
-  const updateAuctionStatus = ({ ad }) => {
+  // Auction status based on the ad-details
+  const updateAuctionStatus = (ad) => {
     if (ad.sold) {
       return "Sold";
     } else if (ad.auctionEnded) {
-      return "Ended, not sold";
+      return "Ended, not-sold";
     } else if (!ad.auctionStarted) {
       return "Upcoming";
     } else {
@@ -44,23 +46,23 @@ function MediaCard(props) {
     >
       <Card style={props.cardStyle}>
         <CardActionArea>
-          {!props.dashStyle && (
+          {!props.dashCard && (
             <CardMedia
               component="img"
               height="180"
-              src={props.adDetails.image ? props.adImage : imagePlaceholder}
+              src={props.ad.image ? props.ad.image : imagePlaceholder}
               alt="green iguana"
             />
           )}
           <CardContent>
             <Typography gutterBottom variant="h6" component="div">
-              {props.adDetails.productName}
+              {props.ad.productName}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Price: $ {props.adDetails.currentPrice.$numberDecimal}
+              Price: $ {props.ad.currentPrice.$numberDecimal}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              Remaining: {secondsToHmsShort(props.adDetails.timer)}
+              Remaining: {secondsToHmsShort(props.ad.timer)}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               Status: {updateAuctionStatus(props.ad)}

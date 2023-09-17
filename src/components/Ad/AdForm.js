@@ -132,7 +132,7 @@ const AdForm = (props) => {
       );
       return res.data.imagePath;
     } catch (error) {
-      console.log(false);
+      console.log("Upload Failed: ", error);
       setUploading(false);
       props.setAlert("File upload failed", "error");
     }
@@ -236,7 +236,7 @@ const AdForm = (props) => {
                   jpg, png or gif maximum 3 MB
                 </Typography>
               )}
-              <label htmlFor="imageFile">{fileName}</label>
+              {/* <label htmlFor="imageFile">{fileName}</label> */}
             </Box>
           )}
 
