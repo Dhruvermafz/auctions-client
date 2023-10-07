@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import { connect } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import openSocket from "socket.io-client";
+// Actions
 import {
   loadAdDetails,
   loadAdImage,
@@ -9,12 +10,13 @@ import {
   placeBid,
   startAuction,
   updateTimer,
-  clearAdDetails,
   updateAdDetails,
   clearAdImage,
   setImageLoadingStatus,
+  clearAdDetails,
 } from "../../actions/ad";
 import { setAlert, clearAlerts } from "../../actions/alert";
+// MUI Components
 import {
   Paper,
   Box,
@@ -23,6 +25,7 @@ import {
   TextField,
   Button,
 } from "@mui/material";
+// Project components
 import Alert from "../Extras/Alert";
 import Spinner from "../Extras/Spinner";
 import LoadingDisplay from "../Extras/LoadingDisplay";
@@ -36,9 +39,8 @@ import {
   imageContainer,
   bidContainer,
   bidButtonStyle,
-} from "../css/adStyles";
+} from "../css/adStyles.js";
 import { secondsToHms } from "../../utils/secondToHms";
-import { REACT_APP_API_BASE_URL } from "../../config";
 
 const Ad = (props) => {
   const params = useParams();
@@ -48,6 +50,7 @@ const Ad = (props) => {
   const [startButton, setStartButton] = useState(true);
   const navigate = useNavigate();
 
+  // Bid button status
   const updateBidButtonStatus = (updatedPrice) => {
     if (
       updatedPrice > Number(props.adDetails.currentPrice.$numberDecimal) &&
@@ -59,13 +62,6 @@ const Ad = (props) => {
       setBidButton(true);
     }
   };
-
-  useEffect(() => {
-    // Check if user is logged in and redirect to login if not
-    if (!props.isAuth) {
-      navigate("/login");
-    }
-  }, [props.isAuth]);
 
   useEffect(() => {
     props.clearAlerts();
@@ -87,21 +83,21 @@ const Ad = (props) => {
     updateBidButtonStatus(bidPrice);
   }, [bidPrice, props.adDetails.auctionEnded]);
 
+  // For ad rooms
   useEffect(() => {
-    const adSocket = openSocket(REACT_APP_API_BASE_URL, {
+    const adSocket = openSocket(process.env.REACT_APP_API_BASE_URL, {
       path: "/socket/adpage",
     });
-
+    // User enters add page
     adSocket.emit("joinAd", { ad: params.adId.toString() });
-
-    // user enters add page
+    // Auction is started
     adSocket.on("auctionStarted", (res) => {
       console.log(res);
       props.updateAdDetails(res.data);
       props.clearAlerts();
-      if (res.action === "started") props.setAlert("Auction started", "info");
+      if (res.action === "started") props.setAlert("Auction started!", "info");
     });
-
+    // Auction is ended
     adSocket.on("auctionEnded", (res) => {
       if (res.action === "sold") {
         props.updateAdDetails(res.ad);
@@ -116,14 +112,13 @@ const Ad = (props) => {
         props.setAlert("Item not sold", "info");
       }
     });
-
-    // timer
+    // Timer
     adSocket.on("timer", (res) => {
       props.updateTimer(res.data);
     });
-
+    // Bid is posted
     adSocket.on("bidPosted", (res) => {
-      console.log("bidPosted");
+      console.log("bidposted");
       props.loadHighestBid(res.data._id);
       props.updateAdDetails(res.data);
     });
@@ -134,18 +129,16 @@ const Ad = (props) => {
       props.clearAdDetails();
       props.clearAdImage();
     };
+    // setAdSocketState(adSocket);
   }, [params.adId]);
 
-  // check if current user is the owner of ad
-
+  // Check if current user is the owner of ad
   useEffect(() => {
     if (props.adDetails.owner && props.auth.user) {
       if (props.adDetails.owner._id === props.auth.user._id) setOwnerAd(true);
       else setOwnerAd(false);
     }
-
-    // check start button
-
+    // Check start button
     if (!props.adDetails.auctionStarted && !props.adDetails.auctionEnded) {
       setStartButton(true);
     } else {
@@ -162,7 +155,10 @@ const Ad = (props) => {
     return <Spinner />;
   }
 
-  // check if user is logged
+  // Check if user is logged
+  if (!props.isAuth) {
+    navigate("/login");
+  }
 
   if (props.loading || props.loadingHighestBid) {
     console.log("loading");
@@ -175,7 +171,7 @@ const Ad = (props) => {
 
   const handleSubmitBid = (e) => {
     e.preventDefault();
-    // place bid
+    // Place bid
     props.placeBid(props.adDetails._id, bidPrice);
   };
 
@@ -194,12 +190,12 @@ const Ad = (props) => {
     return isodt.toDateString();
   };
 
-  // auction status based on the ad details
+  // Auction status based on the ad-details
   const auctionStatus = () => {
     if (props.adDetails.sold) {
       return "Sold";
     } else if (props.adDetails.auctionEnded) {
-      return "Ended, not sold";
+      return "Ended, not-sold";
     } else if (!props.adDetails.auctionStarted) {
       return "Upcoming";
     } else {
@@ -212,7 +208,7 @@ const Ad = (props) => {
       {props.loading ? (
         <LoadingDisplay />
       ) : (
-        <>
+        <Fragment>
           <Alert />
           {!props.adDetails.owner ? (
             <LoadingDisplay />
@@ -222,14 +218,13 @@ const Ad = (props) => {
                 <Typography variant="h4">
                   {props.adDetails.productName}
                 </Typography>
-
                 <Box sx={adArea}>
                   <Box sx={imageContainer}>
                     {!props.imageLoading && (
                       <img
                         src={
-                          props.adDetails.image
-                            ? props.adImage
+                          props.ad
+                            ? props.ad.image || imagePlaceholder
                             : imagePlaceholder
                         }
                         alt={props.adDetails.productName}
@@ -237,7 +232,6 @@ const Ad = (props) => {
                       />
                     )}
                   </Box>
-
                   <Box sx={descriptionArea}>
                     <Typography variant="h6">Description</Typography>
                     <Typography variant="body2">
@@ -299,6 +293,7 @@ const Ad = (props) => {
                         </Box>
                       </Box>
                     )}
+
                     {ownerAd && (
                       <Box sx={bidContainer}>
                         <Box sx={{ height: "auto" }}>
@@ -306,7 +301,7 @@ const Ad = (props) => {
                             variant="contained"
                             disabled={!startButton}
                             onClick={(e) => handleStartAuction(e)}
-                            sx={bidButton}
+                            sx={bidButtonStyle}
                           >
                             Start Auction
                           </Button>
@@ -318,7 +313,7 @@ const Ad = (props) => {
               </Paper>
             </Box>
           )}
-        </>
+        </Fragment>
       )}
     </div>
   );

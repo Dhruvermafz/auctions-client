@@ -16,6 +16,7 @@ import Room from "./components/Room/Room";
 import Board from "./components/Dashboard/Board";
 import Settings from "./components/Home/Settings";
 import Card from "./components/Dashboard/Card";
+import About from "./components/Home/About";
 
 function App() {
   useEffect(() => {
@@ -34,8 +35,9 @@ function App() {
           <Route path="/postad" element={<AdForm />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
-          <Route exact path="/" element={<Board />} />
+          {/* <Route exact path="/" element={<Board />} /> */}
           <Route exact path="/settings" element={<Settings />} />
+          <Route exact path="/about" element={<About />} />
         </Routes>
       </BrowserRouter>
     </Provider>

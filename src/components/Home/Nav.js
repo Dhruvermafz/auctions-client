@@ -99,6 +99,14 @@ const Nav = (props) => {
                       </ListItem>
                       <ListItem
                         button
+                        component={RouterLink}
+                        to="/about"
+                        onClick={handleListClose}
+                      >
+                        <ListItemText primary="About Us" />
+                      </ListItem>
+                      <ListItem
+                        button
                         href="#"
                         color="inherit"
                         onClick={props.logout}

@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 import "../css/home.css";
 import Board from "../Dashboard/Board";
 import Alert from "../Extras/Alert";
+import Footer from "./Footer";
 
 const Home = (props) => {
   if (!props.isAuth) {
@@ -18,6 +19,7 @@ const Home = (props) => {
       <div className="alert__board">
         <Board />
       </div>
+      <Footer />
     </div>
   );
 };

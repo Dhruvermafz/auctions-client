@@ -23,7 +23,11 @@ import {
 import LoadingDisplay from "../Extras/LoadingDisplay";
 import { postAd } from "../../actions/ad";
 import { setAlert, clearAlerts } from "../../actions/alert";
-import { REACT_APP_API_BASE_URL } from "../../config";
+import {
+  REACT_APP_API_BASE_URL,
+  CLOUDINARY_URL,
+  UPLOAD_PRESET,
+} from "../../config";
 const AdForm = (props) => {
   const [form, setForm] = useState({
     productName: "",
@@ -39,7 +43,11 @@ const AdForm = (props) => {
   const [uploading, setUploading] = useState(false);
   const [alert, setAlert] = useState({ message: "", severity: "success" });
   let navigate = useNavigate();
-
+  const cloudinary_url = CLOUDINARY_URL;
+  const upload_preset = UPLOAD_PRESET;
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", upload_preset);
   useEffect(() => {
     return () => {
       props.clearAlerts();
@@ -119,17 +127,24 @@ const AdForm = (props) => {
     }
   };
 
-  const uploadImage = async () => {
+  const uploadImage = async (base64EncodedImage) => {
     setUploading(true);
     const formData = new FormData();
     formData.append("image", file);
 
     try {
-      const res = await axios.post(
-        `${REACT_APP_API_BASE_URL}/upload/image`,
-        formData,
-        { headers: { "Content-Type": "multipart/form-data" } }
-      );
+      const res = await axios
+        .post(cloudinary_url, {
+          body: JSON.stringify({ data: base64EncodedImage }),
+          headers: { "Content-Type": "multipart/form-data" },
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.secure_url !== "") {
+            const uploadedFileUrl = data.secure_url;
+            localStorage.setItem("passportUrl", uploadedFileUrl);
+          }
+        });
       return res.data.imagePath;
     } catch (error) {
       console.log("Upload Failed: ", error);
@@ -236,7 +251,6 @@ const AdForm = (props) => {
                   jpg, png or gif maximum 3 MB
                 </Typography>
               )}
-              {/* <label htmlFor="imageFile">{fileName}</label> */}
             </Box>
           )}
 
