@@ -223,8 +223,8 @@ const Ad = (props) => {
                     {!props.imageLoading && (
                       <img
                         src={
-                          props.ad
-                            ? props.ad.image || imagePlaceholder
+                          props.adDetails.image
+                            ? props.adImage || imagePlaceholder
                             : imagePlaceholder
                         }
                         alt={props.adDetails.productName}
