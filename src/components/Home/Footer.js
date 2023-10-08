@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../css/footer.scss";
+import "../css/footer.css";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import { AiOutlineRight, AiFillTwitterCircle } from "react-icons/ai";
@@ -58,139 +58,11 @@ const Footer = () => {
     <>
       <div className="footercls">
         <footer id="footer">
-          {showButton && (
-            <div className="footer-newsletter">
-              <div className="container">
-                <div className="row justify-content-center">
-                  <div className="col-lg-6">
-                    <h4>Join Our Newsletter</h4>
-                    <p>
-                      Be the first to know about exciting new Auctions , special
-                      events and much more
-                    </p>
-                    <form onSubmit={newsLetterSubmitHandler}>
-                      <input type="email" name="email" value={userData.email} />
-                      <input type="submit" value="Subscribe" />
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          <div className="footer-top">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-3 col-md-6 footer-contact">
-                  <h3>Bestbid</h3>
-                  <p>
-                    Dharmsinh Desai University
-                    <br />
-                    Nadiad, College Rd
-                    <br />
-                    Gujarat 387001 <br />
-                    <br />
-                    <strong>Phone:</strong>+91 8980452333
-                    <br />
-                    <strong>Email:</strong> nihalparmar@gmail.com
-                    <br />
-                  </p>
-                </div>
-
-                <div className="col-lg-3 col-md-6 footer-links">
-                  <h4>Useful Links</h4>
-                  <ul>
-                    {/* <li><NavLink to="/addlot" excat className="nav-link">Add Lot</NavLink></li> */}
-                    <li>
-                      <AiOutlineRight />{" "}
-                      <NavLink to="/" excat className="nav-link">
-                        About us
-                      </NavLink>
-                    </li>
-                    <li>
-                      <AiOutlineRight />{" "}
-                      <NavLink to="/service" excat className="nav-link">
-                        Services
-                      </NavLink>
-                    </li>
-                    <li>
-                      <AiOutlineRight />{" "}
-                      <NavLink to="/contact" excat className="nav-link">
-                        Contact Us
-                      </NavLink>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="col-lg-3 col-md-6 footer-links">
-                  <h4>Our Services</h4>
-                  <ul>
-                    <li>
-                      <AiOutlineRight />{" "}
-                      <NavLink to="/signin" excat className="nav-link">
-                        Sign In
-                      </NavLink>
-                    </li>
-                    <li>
-                      <AiOutlineRight />{" "}
-                      <NavLink to="/signin" excat className="nav-link">
-                        Register
-                      </NavLink>
-                    </li>
-                    <li>
-                      <AiOutlineRight />{" "}
-                      <NavLink to="/lot" excat className="nav-link">
-                        Active Auctions
-                      </NavLink>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="col-lg-3 col-md-6 footer-links">
-                  <h4>Stay Connected</h4>
-                  <p>Best Bid Blogs</p>
-                  <div className="social-links mt-3">
-                    {/* <NavLink to="https://twitter.com/RiyaPar18563538?t=XzT0mte2elxP7XWMUQSD7w&s=08" excat className="nav-link twitter"><FiTwitter/></NavLink>
-        <NavLink to="/contact" excat className="nav-link twitter"><AiFillLinkedin/></NavLink>
-        <NavLink to="/contact" excat className="nav-link twitter"><FiInstagram/></NavLink>
-        <NavLink to="/contact" excat className="nav-link twitter"><FiMail/></NavLink>
- */}
-
-                    <a
-                      href="https://twitter.com/RiyaPar18563538?t=XzT0mte2elxP7XWMUQSD7w&s=08"
-                      className="nav-link twitter"
-                    >
-                      <FiTwitter />
-                    </a>
-                    <a
-                      href="https://www.linkedin.com/in/riya-parmar-4ba3a01b6"
-                      className="nav-link twitter"
-                    >
-                      <AiFillLinkedin />
-                    </a>
-                    <a
-                      href="https://www.instagram.com/invites/contact/?i=rnhihdqk55aw&utm_content=kpj45oh"
-                      className="nav-link twitter"
-                    >
-                      <FiInstagram />
-                    </a>
-                    <a
-                      href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJTNHjhvFrmPQGbJtkZTZPWDwFmfrPfcMdTshcmVKSSLQjZBpwpPrzfKtGnTdLdGBdCxRxV"
-                      className="nav-link twitter"
-                    >
-                      <FiMail />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div className="container py-4">
             <div className="copyright">
               &copy; Copyright{" "}
               <strong>
-                <span>Bestbid</span>
+                <span>Live Auctions</span>
               </strong>
               . All Rights Reserved
             </div>

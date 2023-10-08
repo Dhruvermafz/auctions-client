@@ -10,27 +10,18 @@ import About4 from "../../images/about4.png";
 import Team from "../../images/team.png";
 import Loader from "../Extras/Spinner";
 import { FcNext } from "react-icons/fc";
-import MetaData from "../MetaData/MetaData";
 
-import "../css/about.scss";
+import "../css/about.css";
 import { NavLink } from "react-router-dom";
 
 const About = () => {
   return (
     <>
-      <MetaData title="ABOUT US"></MetaData>
-      {/* <h1>Welcome About Page</h1> */}
-
       <div className="container-fluid nav_bg abtcls">
         <div className="row">
           <div className="col-10 mx-auto">
             <section id="values" className="values">
               <div className="container" data-aos="fade-up">
-                {/* <header className="section-header">
-                  <h2>About Us</h2>
-                  <p>Nonprofit Auction Software</p>
-                </header> */}
-
                 <div className="section-title" data-aos="fade-up">
                   <h2>About Us</h2>
                   <p>Nonprofit Auction Software</p>
@@ -212,7 +203,6 @@ const About = () => {
                     &nbsp;
                   </div>
                 </div>
-                {/* <img src={Img2} className="img-fluid" alt="" /> */}
               </div>
             </section>
 
