@@ -31,7 +31,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/ads/:adId" element={<Card />} />
+          <Route path="/ads/:adId" element={<Ad />} />
           <Route path="/postad" element={<AdForm />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
