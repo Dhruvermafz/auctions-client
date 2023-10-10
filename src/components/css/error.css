@@ -1,0 +1,38 @@
+main {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 11rem;
+  }
+  
+  main img {
+    max-width: 600px;
+    display: block;
+    margin-bottom: 2rem;
+  }
+  
+  main p {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+  }
+  
+  main a {
+    color: #fffffe;
+  }
+  
+  @media (max-width: 700px) {
+    main img {
+      margin-top: 5rem;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    main p {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  
