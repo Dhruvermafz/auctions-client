@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "../css/settings.css";
-import { getSettings, postSettings } from "../../actions/settings";
+import "./settings.css";
 
-const MainContent = () => {
+const Settings = () => {
   const [_Email, setEmail] = useState("");
   const [_Username, setUsername] = useState("");
   const [_Handler, setHandler] = useState("");
@@ -12,7 +11,7 @@ const MainContent = () => {
   useEffect(async () => {
     let data;
     try {
-      data = await getSettings();
+      // data = await getSettings();
       setEmail(data.Email);
       setUsername(data.Username);
       setHandler(data.Handle);
@@ -36,7 +35,7 @@ const MainContent = () => {
       };
 
       try {
-        await postSettings(formData);
+        // await postSettings(formData);
         alert("Settings Updated");
       } catch (error) {
         alert(error.message);
@@ -196,4 +195,4 @@ const MainContent = () => {
   );
 };
 
-export default MainContent;
+export default Settings;

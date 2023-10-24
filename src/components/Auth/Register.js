@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import { setAlert } from "../../actions/alert";
 import { removeAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
-import "../css/auth.css";
+import "./auth.css";
 import Spinner from "../Extras/Spinner";
 import logo from "../../images/auctionslogo3.png";
 import Alert from "../Extras/Alert";

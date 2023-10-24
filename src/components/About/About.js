@@ -2,7 +2,7 @@ import React from "react";
 import About3 from "../../images/about3.jpg";
 import About1 from "../../images/about1.jpg";
 import About4 from "../../images/about4.png";
-import "../css/about.css";
+import "./about.css";
 
 const About = () => {
   return (

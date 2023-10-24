@@ -6,7 +6,7 @@ import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import { login, skipLogin } from "../../actions/auth";
 import { setAlert } from "../../actions/alert";
-import "../css/auth.css";
+import "./auth.css";
 import Spinner from "../Extras/Spinner";
 import logo from "../../images/auctionslogo3.png";
 import Alert from "../Extras/Alert";

@@ -14,9 +14,9 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import Profile from "./components/Profile/Profile";
 import Room from "./components/Room/Room";
 import Board from "./components/Dashboard/Board";
-import Settings from "./components/Home/Settings";
+import Settings from "./components/Settings/Settings";
 import Card from "./components/Dashboard/Card";
-import About from "./components/Home/About";
+import About from "./components/About/About";
 
 function App() {
   useEffect(() => {
