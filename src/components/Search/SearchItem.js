@@ -1,7 +1,7 @@
 import Wrapper from "./SearchItem.styled";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
-import "moment/locale/en"; // Assuming you want to use English locale
+import "moment/locale/en";
 const SearchItem = ({
   auctionItem: {
     name,
@@ -31,7 +31,7 @@ const SearchItem = ({
   const calculateRating = () => {
     // Your rating calculation logic here
   };
-  moment.locale("en"); // Assuming you want to use English locale
+  moment.locale("en");
   moment().format("LTS");
   return (
     <Wrapper auctionType={auctionTypeEN}>
