@@ -2,6 +2,7 @@ import React, { useEffect, useState, Fragment } from "react";
 import { connect } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import openSocket from "socket.io-client";
+import { REACT_APP_API_BASE_URL } from "../../config";
 // Actions
 import {
   loadAdDetails,
@@ -85,7 +86,7 @@ const Ad = (props) => {
 
   // For ad rooms
   useEffect(() => {
-    const adSocket = openSocket(process.env.REACT_APP_API_BASE_URL, {
+    const adSocket = openSocket(REACT_APP_API_BASE_URL, {
       path: "/socket/adpage",
     });
     // User enters add page
