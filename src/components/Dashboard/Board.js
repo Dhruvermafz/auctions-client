@@ -14,6 +14,7 @@ import { loadAds, adPostedByOther, updateAdInList } from "../../actions/ad";
 import { setAlert, clearAlerts } from "../../actions/alert";
 import Spinner from "../Extras/Spinner";
 import MediaCard from "./Card";
+import { REACT_APP_API_BASE_URL } from "../../config";
 
 const Board = (props) => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -24,7 +25,7 @@ const Board = (props) => {
       props.loadAds(props.passedUser);
     } else {
       props.loadAds();
-      const socket = openSocket(process.env.REACT_APP_API_BASE_URL);
+      const socket = openSocket(REACT_APP_API_BASE_URL);
 
       socket.on("addAd", (data) => {
         console.log(data);
