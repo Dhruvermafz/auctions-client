@@ -3,14 +3,14 @@ import { useParams } from "react-router-dom";
 import openSocket from "socket.io-client";
 import { Box, Typography } from "@mui/material";
 import Spinner from "../Extras/Spinner";
-
+import { REACT_APP_API_BASE_URL } from "../../config";
 const Room = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [room, setRoom] = useState(null);
 
   useEffect(() => {
-    const socket = openSocket(process.env.REACT_APP_API_BASE_URL);
+    const socket = openSocket(REACT_APP_API_BASE_URL);
 
     // Function to fetch the room details using the ad ID
     const fetchRoomDetails = async () => {
