@@ -12,10 +12,7 @@ import Ad from "./components/Ad/Ad";
 import AdForm from "./components/Ad/AdForm";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Profile from "./components/Profile/Profile";
-import Room from "./components/Room/Room";
-import Board from "./components/Dashboard/Board";
 import Settings from "./components/Settings/Settings";
-import Card from "./components/Dashboard/Card";
 import About from "./components/About/About";
 
 function App() {
@@ -35,7 +32,6 @@ function App() {
           <Route path="/postad" element={<AdForm />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Profile />} />
-          {/* <Route exact path="/" element={<Board />} /> */}
           <Route exact path="/settings" element={<Settings />} />
           <Route exact path="/about" element={<About />} />
         </Routes>
