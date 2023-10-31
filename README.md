@@ -67,6 +67,21 @@ We use MongoDB for our database to store user information and ad data. Cloudinar
 
 ---
 
+## Screenshots
+<p align="center">
+  <a href="https://live-auctions.vercel.app/">
+    <img width="600" src="./screenshots/home.jpg">
+  </a>
+</p>
+<br>
+<p align="center">
+  <a href="https://live-auctions.vercel.app/">
+    <img width="600" src="./screenshots/ad.jpg">
+  </a>
+</p>
+
+---
+
 ## Credits
 
 - Project authors and contributors
