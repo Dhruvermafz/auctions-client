@@ -26,6 +26,7 @@ import LoadingDisplay from "../Extras/LoadingDisplay";
 // Actions
 import { postAd } from "../../actions/ad";
 import { setAlert, clearAlerts } from "../../actions/alert";
+import { REACT_APP_API_BASE_URL } from "../../config";
 
 const AdForm = (props) => {
   const [form, setForm] = useState({

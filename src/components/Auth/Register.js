@@ -71,7 +71,9 @@ const Register = ({ setAlert, register, isAuth, loading }) => {
               name="name"
               required
               value={name}
-              onChange={onChange}
+              onChange={(e) => {
+                onChange(e);
+              }}
             />
           </div>
           <div className="form-group">
