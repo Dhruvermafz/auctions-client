@@ -29,33 +29,35 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
-export const register = (userData) => async (dispatch) => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
+export const register =
+  ({ name, email, password, phone, address }) =>
+  async (dispatch) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      const res = await axios.post(
+        `${REACT_APP_API_BASE_URL}/user`,
+        JSON.stringify({ username: name, email, password, address, phone }),
+        config
+      );
+
+      dispatch({
+        type: REGISTER_SUCCESS,
+        payload: res.data,
+      });
+
+      dispatch(loadUser());
+    } catch (err) {
+      handleErrors(err, dispatch);
+      dispatch({
+        type: LOGIN_FAIL,
+      });
+    }
   };
-
-  try {
-    const res = await axios.post(
-      `${REACT_APP_API_BASE_URL}/user`,
-      JSON.stringify(userData),
-      config
-    );
-
-    dispatch({
-      type: REGISTER_SUCCESS,
-      payload: res.data,
-    });
-
-    dispatch(loadUser());
-  } catch (err) {
-    handleErrors(err, dispatch);
-    dispatch({
-      type: LOGIN_FAIL,
-    });
-  }
-};
 
 export const login = (email, password) => async (dispatch) => {
   const config = {
