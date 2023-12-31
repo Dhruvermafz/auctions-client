@@ -1,85 +1,43 @@
-import React from "react";
-import "./about.css";
-import missionImage from "../../images/about4.png";
-import easeOfUseImage from "../../images/about3.jpg";
-import modernWebImage from "../../images/about1.jpg";
+import Container from "@mui/material/Container";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 
 const About = () => {
   return (
-    <>
-      <div className="container-fluid nav_bg abtcls">
-        <div className="row">
-          <div className="col-10 mx-auto">
-            <section id="about" className="about">
-              <div className="container" data-aos="fade-up">
-                <div className="section-title" data-aos="fade-up">
-                  <h2>About Us</h2>
-                  <p>Nonprofit Auction Software</p>
-                </div>
+    <Container>
+      <Typography variant="h2" textAlign="center" sx={{ my: 3 }} component="h1">
+        About Us
+      </Typography>
 
-                <div className="row abtclssection">
-                  {/* Mission */}
-                  <div
-                    className="col-lg-4"
-                    data-aos="fade-up"
-                    data-aos-delay="200"
-                  >
-                    <div className="box">
-                      <img src={missionImage} className="img-fluid" alt="" />
-                      <h3>Mission</h3>
-                      <p>
-                        Live Auctions in physical mode can be challenging.
-                        People cannot sell products globally without traveling
-                        to an auction place. With our app, individuals with a
-                        good internet connection can easily sell their products
-                        via bidding.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Ease of Use */}
-                  <div
-                    className="col-lg-4 mt-4 mt-lg-0"
-                    data-aos="fade-up"
-                    data-aos-delay="400"
-                  >
-                    <div className="box">
-                      <img src={easeOfUseImage} className="img-fluid" alt="" />
-                      <h3>Ease of Use</h3>
-                      <p>
-                        Our platform ensures that results can be generated
-                        easily through the website, without third-party
-                        interruptions. We verify all sellers and bidders in our
-                        system to ensure a secure and seamless experience.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Modern Web */}
-                  <div
-                    className="col-lg-4 mt-4 mt-lg-0"
-                    data-aos="fade-up"
-                    data-aos-delay="600"
-                  >
-                    <div className="box">
-                      <img src={modernWebImage} className="img-fluid" alt="" />
-                      <h3>Modern Web</h3>
-                      <p>
-                        Our web application is designed with a modern approach,
-                        providing advanced filter functionality. Customers and
-                        bidders can easily find items based on their preferences
-                        and choices.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-            {/* End About Section */}
-          </div>
-        </div>
-      </div>
-    </>
+      <Paper elevation={2} sx={{ p: 4 }}>
+        <Typography mb={3} variant="body1">
+          Welcome to our real-time auction and bidding app! We are a team of
+          passionate auction enthusiasts who have created a platform for users
+          to participate in live auctions from the comfort of their own homes.
+          Our app features a wide variety of auctions, from fine art and
+          antiques to collectibles and rare finds.
+        </Typography>
+        <Typography mb={3} variant="body1">
+          Our app is designed to be easy to use and accessible from any
+          device.You can view upcoming and live auctions. You can place bids on
+          auctions in real-time and track the status of your bids. You can also
+          view and manage a list of your won auctions and see the auctions that
+          you have initiated.
+        </Typography>
+        <Typography mb={3} variant="body1">
+          In addition to our auctions, we also offer a variety of resources and
+          tools for buyers and sellers. Our blog features articles on a range of
+          topics, including collecting, appraisal, and buying and selling
+          strategies. We also offer a seller's guide with tips on how to list
+          and promote your items on our platform.
+        </Typography>
+        <Typography mb={3} variant="body1">
+          Thank you for choosing our app for your auction and bidding needs. We
+          hope you have a great experience with us and find some amazing items
+          to bid on!
+        </Typography>
+      </Paper>
+    </Container>
   );
 };
 

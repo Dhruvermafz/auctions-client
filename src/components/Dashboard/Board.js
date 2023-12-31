@@ -16,71 +16,87 @@ import Spinner from "../Extras/Spinner";
 import MediaCard from "./Card";
 import { REACT_APP_API_BASE_URL } from "../../config";
 
-const Board = (props) => {
+const Board = ({
+  loadAds,
+  adPostedByOther,
+  updateAdInList,
+  setAlert,
+  clearAlerts,
+  ads,
+  loading,
+  isAuth,
+  user,
+  passedUser,
+}) => {
   const [pageNumber, setPageNumber] = useState(1);
   const [adPerPage] = useState(6);
 
   useEffect(() => {
-    if (props.passedUser) {
-      props.loadAds(props.passedUser);
-    } else {
-      props.loadAds();
+    const initializeSocket = () => {
       const socket = openSocket(REACT_APP_API_BASE_URL);
 
       socket.on("addAd", (data) => {
         console.log(data);
 
         if (
-          props.user &&
+          isAuth &&
           data.ad.owner &&
-          data.ad.owner.toString() !== props.user._id.toString()
+          data.ad.owner.toString() !== user?._id?.toString()
         ) {
-          props.clearAlerts();
-          props.setAlert("New ads available", "info", 60000);
+          clearAlerts();
+          setAlert("New ads available", "info", 60000);
         }
       });
 
-      // when auction starts/ends
       socket.on("auctionStarted", (res) => {
-        props.updateAdInList(res.data);
+        updateAdInList(res.data);
       });
       socket.on("auctionEnded", (res) => {
-        props.updateAdInList(res.data);
+        updateAdInList(res.data);
       });
 
       return () => {
         socket.emit("leaveHome");
         socket.off();
-        props.clearAlerts();
+        clearAlerts();
       };
-    }
-  }, []);
+    };
 
-  if (!props.isAuth) {
+    if (passedUser) {
+      loadAds(passedUser);
+    } else {
+      loadAds();
+      initializeSocket();
+    }
+  }, [
+    loadAds,
+    adPostedByOther,
+    updateAdInList,
+    setAlert,
+    clearAlerts,
+    isAuth,
+    user,
+    passedUser,
+  ]);
+
+  if (!isAuth) {
     return <Navigate to="/login" />;
   }
 
-  // Filter ads with auctionEnded === false
-  const filteredAds = props.ads.filter((ad) => !ad.auctionEnded);
-
-  // pagination
-  let lastAdIndex = pageNumber * adPerPage;
-  let firstAdIndex = lastAdIndex - adPerPage;
-
-  // page number for buttons
-  let pageNumberButtons = [];
+  const filteredAds = ads.filter((ad) => !ad.auctionEnded);
+  const lastAdIndex = pageNumber * adPerPage;
+  const firstAdIndex = lastAdIndex - adPerPage;
   const numPages = Math.ceil(filteredAds.length / adPerPage);
+  const pageNumberButtons = Array.from(
+    { length: numPages },
+    (_, index) => index + 1
+  );
 
-  for (let i = 1; i <= numPages; i++) {
-    pageNumberButtons.push(i);
-  }
-
-  // when page number button is clicked
   const clickPageNumerButton = (num) => {
     setPageNumber(num);
   };
 
-  return props.loading ? (
+  return loading ? (
     <Spinner />
   ) : (
     <Box sx={boardStyle}>

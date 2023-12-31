@@ -41,8 +41,8 @@ const Nav = (props) => {
               <Button>Home</Button>
             </RouterLink>
 
-            <RouterLink to="/dashboard" style={{ textDecoration: "none" }}>
-              <Button>Dashboard</Button>
+            <RouterLink to="/about" style={{ textDecoration: "none" }}>
+              <Button>About Us</Button>
             </RouterLink>
 
             <RouterLink to="/postad" style={{ textDecoration: "none" }}>
@@ -59,13 +59,13 @@ const Nav = (props) => {
               {/* Profile Circle Avatar with List */}
               <Avatar
                 alt="User Avatar"
-                src="path_to_user_avatar.jpg" // Replace with the path to the user's avatar image
+                src="path_to_user_avatar.jpg"
                 onClick={handleAvatarClick}
                 sx={{
                   marginLeft: "10px",
                   "&:hover": {
-                    border: "2px solid #ccc", // Add the styles you want to apply on hover
-                    cursor: "pointer", // Change the cursor on hover
+                    border: "2px solid #ccc",
+                    cursor: "pointer",
                   },
                 }}
               />
@@ -84,26 +84,26 @@ const Nav = (props) => {
                       <ListItem
                         button
                         component={RouterLink}
+                        to="/myAuctions"
+                        onClick={handleListClose}
+                      >
+                        <ListItemText primary="My Auctions" />
+                      </ListItem>
+                      <ListItem
+                        button
+                        component={RouterLink}
+                        to="/wonAuctions"
+                        onClick={handleListClose}
+                      >
+                        <ListItemText primary="Won Aucitons" />
+                      </ListItem>
+                      <ListItem
+                        button
+                        component={RouterLink}
                         to="/profile"
                         onClick={handleListClose}
                       >
                         <ListItemText primary="Profile" />
-                      </ListItem>
-                      <ListItem
-                        button
-                        component={RouterLink}
-                        to="/settings"
-                        onClick={handleListClose}
-                      >
-                        <ListItemText primary="Settings" />
-                      </ListItem>
-                      <ListItem
-                        button
-                        component={RouterLink}
-                        to="/about"
-                        onClick={handleListClose}
-                      >
-                        <ListItemText primary="About Us" />
                       </ListItem>
                       <ListItem
                         button

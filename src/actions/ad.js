@@ -108,6 +108,15 @@ export const loadAdImage = (imageUrl) => async (dispatch) => {
   }
 };
 
+export const sellAd = (adId) => async (dispatch) => {
+  dispatch({
+    type: "SELL_AD",
+    payload: {
+      adId,
+    },
+  });
+};
+
 // Clear ad image
 export const clearAdImage = (adId) => async (dispatch) => {
   dispatch({

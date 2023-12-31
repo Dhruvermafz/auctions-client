@@ -18,6 +18,7 @@ const Login = (props) => {
   });
 
   const { email, password } = formData;
+  const [loading, setLoading] = useState(false);
 
   const onChange = (e) => {
     setForm({
@@ -27,8 +28,11 @@ const Login = (props) => {
   };
 
   const onSubmit = async (e) => {
+    setLoading(true);
+
     e.preventDefault();
     props.login(email, password);
+    setLoading(false);
   };
 
   if (props.isAuthenticated) {
@@ -94,8 +98,9 @@ const Login = (props) => {
               type="submit"
               className="auth__button"
               color="primary"
+              disabled={loading}
             >
-              Login
+              {loading ? <Spinner size={24} /> : "Login"}
             </Button>
           </form>
 

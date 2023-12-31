@@ -1,26 +1,23 @@
-import React from "react";
-import "../css/footer.css";
-
-import "font-awesome/css/font-awesome.min.css";
+import styled from "@emotion/styled";
+import Typography from "@mui/material/Typography";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <>
-      <div className="footercls">
-        <footer id="footer">
-          <div className="container py-4">
-            <div className="copyright">
-              &copy; Copyright{" "}
-              <strong>
-                <span>Live Auctions</span>
-              </strong>
-              . All Rights Reserved
-            </div>
-          </div>
-        </footer>
-      </div>
-    </>
+    <FooterContainer>
+      <Typography variant="body1" textAlign={"center"}>
+        &copy; {currentYear} Live Auctions
+      </Typography>
+    </FooterContainer>
   );
 };
 
 export default Footer;
+
+const FooterContainer = styled.footer`
+  color: #fff;
+  padding: 1rem;
+  background-color: #1b1b1b;
+  margin-top: auto;
+`;
