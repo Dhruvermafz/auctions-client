@@ -5,8 +5,6 @@ import "../css/home.css";
 import Board from "../Dashboard/Board";
 import Alert from "../Extras/Alert";
 import Footer from "./Footer";
-import Topbar from "../Extras/TopBar";
-import CategoryListings from "../Categories/CategoryListing";
 
 const Home = (props) => {
   if (!props.isAuth) {
